@@ -17,8 +17,9 @@
       "test": "test.ts",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": "my",
       "styles": [
+        "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
         "styles.css"
       ],
       "scripts": [],

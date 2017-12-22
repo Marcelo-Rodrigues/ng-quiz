@@ -1,0 +1,13 @@
+div {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+  align-content: stretch;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}

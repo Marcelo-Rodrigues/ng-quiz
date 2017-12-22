@@ -1,0 +1,17 @@
+<table class="tabela-pergunta">
+  <thead>
+    <tr>
+      <th>{{pergunta}}</th>
+    </tr>
+    <tbody>
+      <tr>
+        <td>
+          <mat-radio-group class="quiz-radio-group" (change)="opcaoSelecionada($event)">
+            <mat-radio-button class="quiz-radio-button" *ngFor="let opcao of opcoes" [value]="opcao">
+              {{opcao}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </td>
+      </tr>
+    </tbody>
+</table>

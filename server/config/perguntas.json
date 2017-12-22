@@ -1,0 +1,59 @@
+[{
+  "categoria": "Inglês",
+  "descricao": "Perguntas de palavras correspondentes em inglês",
+  "imagem": "ingles.png",
+  "perguntas": [
+    {
+      "pergunta": "'Inverno' em inglês",
+      "opcoes": [
+        "Winter",
+        "Spring",
+        "Summer",
+        "Autumn"
+      ]
+    },
+    {
+      "pergunta": "'Cachorro' em inglês",
+      "opcoes": [
+        "Frog",
+        "Log",
+        "Dog",
+        "Cat"
+      ]
+    },
+    {
+      "pergunta": "'Framboesa' em inglês",
+      "opcoes": [
+        "Raspberry",
+        "BlueBerry",
+        "Berry",
+        "Blackberry"
+      ]
+    }
+  ]
+},
+{
+  "categoria": "Fenômeno astronômico",
+  "descricao": "Perguntas sobre fenômenos astronômicos em geral",
+  "imagem": "fenomeno-astronomico.png",
+  "perguntas": [
+    {
+      "pergunta": "Sobre o solstício de verão é correto afirmar:",
+      "opcoes": [
+        "Compreende uma semana",
+        "É o dia mais longo e a noite mais curta do ano",
+        "É o período onde ocorre intensa emissão de raios UV",
+        "É a noite mais curta e o dia mais longo do ano"
+      ]
+    },
+    {
+      "pergunta": "Sobre o equinócio de outono é correto afirmar:",
+      "opcoes": [
+        "Se inicia logo após o equinócio de primavera",
+        "É a noite mais longa do ano",
+        "O dia e a noite possuem a mesma duração",
+        "Nenhuma das anteriores"
+      ]
+    }
+  ]
+}]
