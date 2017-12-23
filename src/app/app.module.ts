@@ -9,12 +9,19 @@ import { PerguntaComponent } from './pergunta/pergunta.component';
 import { QuizService } from './shared/quiz.service';
 import { QuestionarioComponent } from './questionario/questionario.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { ListaQuestionariosComponent } from './lista-questionarios/lista-questionarios.component';
+import { ResumoQuestionarioComponent } from './resumo-questionario/resumo-questionario.component';
+import { ResumoRespostasComponent } from './resumo-respostas/resumo-respostas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PerguntaComponent,
-    QuestionarioComponent
+    QuestionarioComponent,
+    ListaQuestionariosComponent,
+    ResumoQuestionarioComponent,
+    ResumoRespostasComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatProgressBarModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [QuizService],
   bootstrap: [AppComponent]

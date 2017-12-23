@@ -1,4 +1,4 @@
-div {
+/* div {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
@@ -10,4 +10,17 @@ div {
 
 h1 {
   text-align: center;
+} */
+
+.jumbotron-responsivo {
+  text-align: center;
+}
+
+@media all and (max-height: 500px)
+{
+    .jumbotron-responsivo
+    {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
 }

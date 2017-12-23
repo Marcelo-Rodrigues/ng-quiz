@@ -1,0 +1,18 @@
+
+<div class="container">
+  <h2>Resumo do questionário</h2>
+
+  <ng-container *ngFor="let resposta of respostas">
+      <div class="card">
+        <div class="card-heading bg-info">
+          Pergunta: {{resposta.pergunta.pergunta}}
+        </div>
+        <div class="card-body" *ngIf="resposta.opcao">
+          Respondido: {{resposta.opcao}}
+        </div>
+        <div class="card-body bg-danger" *ngIf="!resposta.opcao">
+          Não respondido
+        </div>
+      </div>
+  </ng-container>
+</div>

@@ -5,6 +5,7 @@
   "imagem": "ingles.png",
   "perguntas": [
     {
+      "_id": 1,
       "pergunta": "'Inverno' em inglês",
       "opcoes": [
         "Winter",
@@ -14,6 +15,7 @@
       ]
     },
     {
+      "_id": 2,
       "pergunta": "'Cachorro' em inglês",
       "opcoes": [
         "Frog",
@@ -23,6 +25,7 @@
       ]
     },
     {
+      "_id": 3,
       "pergunta": "'Framboesa' em inglês",
       "opcoes": [
         "Raspberry",
@@ -40,6 +43,7 @@
   "imagem": "fenomeno-astronomico.png",
   "perguntas": [
     {
+      "_id": 1,
       "pergunta": "Sobre o solstício de verão é correto afirmar:",
       "opcoes": [
         "Compreende uma semana",
@@ -49,6 +53,7 @@
       ]
     },
     {
+      "_id": 2,
       "pergunta": "Sobre o equinócio de outono é correto afirmar:",
       "opcoes": [
         "Se inicia logo após o equinócio de primavera",

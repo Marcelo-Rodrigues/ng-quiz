@@ -1,8 +1,8 @@
-<div class="jumbotron">
+<div class="jumbotron jumbotron-responsivo">
   <div class="container">
     <h1>Quiz</h1>
   </div>
 </div>
-<div class="container">
-  <my-questionario *ngFor="let questionario of questionarios" [questionario]="questionario"></my-questionario>
+<div class="container-responsive">
+  <router-outlet></router-outlet>
 </div>

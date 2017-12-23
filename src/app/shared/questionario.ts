@@ -1,7 +1,7 @@
 import { Pergunta } from './pergunta';
 
 export class Questionario {
-  _id: number;
+  _id: string;
   categoria: string;
   descricao: string;
   imagem: string;

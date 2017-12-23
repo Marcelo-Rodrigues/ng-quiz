@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Input, Output } from '@angular/core';
+import { Pergunta } from '../shared/pergunta';
+import { MatRadioChange } from '@angular/material';
+import { Opcao } from '../shared/opcao';
 
 @Component({
   selector: 'my-pergunta',
@@ -7,20 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerguntaComponent implements OnInit {
 
-  pergunta = 'Qual é o inverno?';
-  opcoes = [
-    'Winter',
-    'Spring',
-    'Summer',
-    'Autumn',
-  ];
+  @Input() pergunta: Pergunta;
+  @Output() opcaoSelecionada = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  opcaoSelecionada(opcao) {
-    console.log(opcao);
+  aoSelecionarOpcao(opcao: MatRadioChange) {
+    this.opcaoSelecionada.emit(new Opcao(this.pergunta, opcao.value));
   }
 
 }

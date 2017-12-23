@@ -1,12 +1,10 @@
-<mat-card>
-  <mat-card-header>
-    <div mat-card-avatar class="questionario-header-image" [style.background]="'url(' + obterUrlImagem() + ')'"></div>
-    <mat-card-title>{{questionario.categoria}}</mat-card-title>
-    <mat-card-subtitle>{{questionario.perguntas.length}} questões</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      {{questionario.descricao}}
-    </p>
-  </mat-card-content>
-</mat-card>
+<my-pergunta [pergunta]="pergunta" (opcaoSelecionada)="aoSelecionarOpcao($event)"></my-pergunta>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="md-6">
+      <button class="btn btn-primary" [routerLink]="['/']">Escolher outro questionário</button>
+    </div>
+  </div>
+</div>
+
