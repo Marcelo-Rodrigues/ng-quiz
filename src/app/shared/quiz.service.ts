@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
   import { Observable } from 'rxjs/Rx';
 import { Questionario } from './questionario';
 
-const urlBase = '/';
+const urlBase = 'http://localhost:5000/';
 
 @Injectable()
 export class QuizService {
@@ -13,6 +13,10 @@ export class QuizService {
   obterQuestionarios(): Observable<Questionario[]> {
     return <Observable<Questionario[]>>this.http
       .get(urlBase + 'perguntas');
+  }
+
+  obterUrlImagem(nome: string) {
+    return urlBase + nome;
   }
 
 }

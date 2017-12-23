@@ -1,7 +1,8 @@
-<div>
-  <h1>Quiz</h1>
-
-<my-questionario *ngFor="let questionario of questionarios" [questionario]="questionario"></my-questionario>
-<!--
-  <my-pergunta></my-pergunta> -->
+<div class="jumbotron">
+  <div class="container">
+    <h1>Quiz</h1>
+  </div>
+</div>
+<div class="container">
+  <my-questionario *ngFor="let questionario of questionarios" [questionario]="questionario"></my-questionario>
 </div>

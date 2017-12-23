@@ -1,4 +1,5 @@
 [{
+  "_id": "ingles",
   "categoria": "Inglês",
   "descricao": "Perguntas de palavras correspondentes em inglês",
   "imagem": "ingles.png",
@@ -33,6 +34,7 @@
   ]
 },
 {
+  "_id": "fenomeno-astronomico",
   "categoria": "Fenômeno astronômico",
   "descricao": "Perguntas sobre fenômenos astronômicos em geral",
   "imagem": "fenomeno-astronomico.png",

@@ -2,3 +2,12 @@
 .questionario-header-image {
   background-size: cover;
 }
+
+mat-card {
+  margin: 10px;
+}
+
+mat-card:hover {
+  background-color: #54ddfc;
+  cursor: pointer;
+}

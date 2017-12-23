@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatRadioModule, MatCardModule, MatProgressBarModule, MatGridListModule, MatListModule } from '@angular/material';
+import { MatRadioModule, MatCardModule, MatProgressBarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -19,12 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatButtonModule,
     MatRadioModule,
     MatCardModule,
     MatProgressBarModule,
-    MatGridListModule,
-    MatListModule,
     FormsModule,
     HttpClientModule
   ],
