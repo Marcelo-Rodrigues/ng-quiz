@@ -1,18 +1,25 @@
-
 <div class="container">
   <h2>Resumo do questionário</h2>
 
-  <ng-container *ngFor="let resposta of respostas">
-      <div class="card">
+  <div class="row">
+    <div class="col">
+      <div class="card" *ngFor="let resposta of respostas">
         <div class="card-heading bg-info">
           Pergunta: {{resposta.pergunta.pergunta}}
         </div>
         <div class="card-body" *ngIf="resposta.opcao">
-          Respondido: {{resposta.opcao}}
+          Resposta: {{resposta.opcao}}
         </div>
         <div class="card-body bg-danger" *ngIf="!resposta.opcao">
           Não respondido
         </div>
       </div>
-  </ng-container>
+    </div>
+  </div>
+
+  <my-botoes-navegacao [exibirAvancar]="false" (voltarClick)="voltar()">
+    <ng-container direita>
+      <button class="btn btn-success">Confirmar respostas e validar</button>
+    </ng-container>
+  </my-botoes-navegacao>
 </div>

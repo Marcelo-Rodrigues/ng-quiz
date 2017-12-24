@@ -11,20 +11,36 @@ import { environment } from '../../environments/environment';
 export class QuizService {
 
   respostas = {};
-  questionario: Questionario[];
-  constructor(private http: HttpClient, private router: Router) { }
+  questionarios: Questionario[];
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   obterUrlImagem(nome: string) {
     return environment.apiUrl + nome;
   }
 
   obterQuestionarios() {
-    if (this.questionario) {
-      return Observable.of(this.questionario);
+    if (this.questionarios) {
+      return Observable.of(this.questionarios);
     } else {
       return this.http.get<Questionario[]>(environment.apiUrl + 'perguntas')
-        .do(questionario => this.questionario = questionario);
+        .do((questionarios => this.inicializarRespostas(questionarios));
     }
+  }
+
+  inicializarRespostas(questionarios: Questionario[]) {
+    this.questionarios = questionarios;
+    this.respostas = {};
+    console.log(questionarios);
+    questionarios.forEach(questionario => {
+
+      const questionarioEmBranco = questionario.perguntas.map(p => new Opcao(p, null));
+
+      // manter respostas ja preenchidas
+      this.respostas[questionario._id] = Object.assign(questionarioEmBranco, this.respostas[questionario._id]);
+
+    });
+    console.log(this.respostas);
   }
 
   obterPerguntas(idQuestionario: string) {
@@ -48,12 +64,26 @@ export class QuizService {
     this.obterPerguntas(idQuestionario).subscribe(
       (perguntas) => {
         if (idPerguntaAtual === this.obterUltimaPergunta(perguntas)._id) {
-          this.router.navigate(['/questionario', idQuestionario, 'resumo']);
+          this.direcionarQuestionario(idQuestionario, 'resumo');
         } else {
-          this.router.navigate(['/questionario', idQuestionario, idPerguntaAtual + 1]);
+          this.direcionarQuestionario(idQuestionario, idPerguntaAtual + 1);
         }
       }
     );
+  }
+
+  moverPerguntaAnterior(idQuestionario: string, idPerguntaAtual: number) {
+    if (idPerguntaAtual > 1) {
+      this.direcionarQuestionario(idQuestionario, idPerguntaAtual - 1);
+    } else if (idPerguntaAtual === -1) {
+      this.obterPerguntas(idQuestionario)
+        .map(perguntas => this.obterUltimaPergunta(perguntas)._id)
+        .subscribe(id => this.direcionarQuestionario(idQuestionario, id));
+    }
+  }
+
+  direcionarQuestionario(idQuestionario: string, idPergunta: string | number) {
+    this.router.navigate(['/questionario', idQuestionario, idPergunta]);
   }
 
   obterUltimaPergunta(perguntas: Pergunta[]) {
@@ -70,12 +100,6 @@ export class QuizService {
 
     if (respostasQuestionario) {
       this.atualizarResposta(respostasQuestionario, resposta);
-    } else {
-      this.obterPerguntas(idQuestionario)
-        .subscribe(perguntas => {
-          this.respostas[idQuestionario] = perguntas.map(p => new Opcao(p, null));
-          this.atualizarResposta(this.respostas[idQuestionario], resposta);
-        });
     }
   }
 }

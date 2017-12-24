@@ -13,6 +13,7 @@ export class ResumoRespostasComponent implements OnInit {
 
   private subscricaoRota: Subscription;
   respostas: Opcao[];
+  idQuestionario: string;
   constructor(private route: ActivatedRoute, private servicoQuiz: QuizService) { }
 
   ngOnInit() {
@@ -20,10 +21,15 @@ export class ResumoRespostasComponent implements OnInit {
   }
 
   exibirResumo(idQuestionario: string) {
+    this.idQuestionario = idQuestionario;
     this.servicoQuiz.obterPerguntas(idQuestionario)
       .subscribe(perguntas => {
         this.respostas = this.servicoQuiz.respostas[idQuestionario];
       });
+  }
+
+  voltar() {
+    this.servicoQuiz.moverPerguntaAnterior(this.idQuestionario, -1);
   }
 
 }

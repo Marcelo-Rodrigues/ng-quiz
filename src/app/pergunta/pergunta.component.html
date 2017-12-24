@@ -1,14 +1,14 @@
 <div class="container" *ngIf="pergunta">
-  <mat-radio-group class="quiz-radio-group" (change)="aoSelecionarOpcao($event)">
+  <mat-radio-group class="quiz-radio-group" (change)="aoSelecionarOpcao($event)" >
     <div class="row justify-content-md-center">
-      <div class="col col-md-auto">{{pergunta.pergunta}}</div>
+      <div class="col col-md-auto"><h4>{{pergunta.pergunta}}</h4></div>
     </div>
     <div class="row">&nbsp;</div>
     <div class="row justify-content-md-center">
-      <div class="col col-md-auto">
+      <div class="col col-md-8">
           <div class="row" *ngFor="let opcao of pergunta.opcoes">
-            <div class="col col-md-auto">
-              <mat-radio-button class="quiz-radio-button" [value]="opcao">
+            <div class="col col-md-8">
+              <mat-radio-button class="quiz-radio-button" [value]="opcao" [tabindex]="tabIndex">
                 {{opcao}}
               </mat-radio-button>
             </div>

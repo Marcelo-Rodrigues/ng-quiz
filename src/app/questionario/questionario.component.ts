@@ -17,6 +17,8 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
   pergunta: Pergunta;
   idQuestionario: string;
   idPergunta: number;
+  posicao = 2;
+  autoAvancar = true;
 
   constructor(private route: ActivatedRoute, private servicoQuiz: QuizService) { }
 
@@ -32,8 +34,17 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
 
   aoSelecionarOpcao(opcao) {
     this.servicoQuiz.salvarResposta(this.idQuestionario, opcao);
-    setTimeout(() => this.servicoQuiz.moverProximaPergunta(this.idQuestionario, this.idPergunta), 200);
+    if (this.autoAvancar) {
+      setTimeout(() => this.avancar(), 200);
+    }
+  }
 
+  avancar() {
+    this.servicoQuiz.moverProximaPergunta(this.idQuestionario, this.idPergunta);
+  }
+
+  voltar() {
+    this.servicoQuiz.moverPerguntaAnterior(this.idQuestionario, this.idPergunta);
   }
 
   exibirQuestionario(idQuestionario: string, idPergunta: number) {

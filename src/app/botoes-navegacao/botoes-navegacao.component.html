@@ -1,0 +1,20 @@
+
+<div class="row">
+  <div class="col">
+    <button class="btn btn default" matTooltip="Voltar" [disabled]="desabilitarVoltar" (click)="aoClicarVoltar()">
+      <i class="fa fa-angle-left"></i>
+    </button>
+  </div>
+  <div class="col text-center">
+    <button class="btn btn-primary" [routerLink]="['/']" tabindex="3" matTooltip="Página inicial">
+      <i class="fa fa-home"></i>
+    </button>
+  </div>
+  <div class="col text-right">
+    <button class="btn btn default" matTooltip="Avançar" (click)="aoClicarAvancar()" *ngIf="exibirAvancar">
+      <i class="fa fa-angle-right"></i>
+    </button>
+    <ng-content select="[direita]">
+    </ng-content>
+  </div>
+</div>

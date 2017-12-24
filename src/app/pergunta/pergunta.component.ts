@@ -11,6 +11,7 @@ import { Opcao } from '../shared/opcao';
 })
 export class PerguntaComponent implements OnInit {
 
+  @Input() tabIndex: number;
   @Input() pergunta: Pergunta;
   @Output() opcaoSelecionada = new EventEmitter();
 

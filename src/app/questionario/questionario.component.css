@@ -1,0 +1,9 @@
+.mat-slider {
+  width: 100%;
+}
+div.etapa {
+  overflow-x: scroll;
+}
+.etapa button {
+  margin-left: 2px;
+}
