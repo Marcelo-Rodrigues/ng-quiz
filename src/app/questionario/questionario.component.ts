@@ -20,6 +20,10 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
   posicao = 2;
   autoAvancar = true;
 
+  get estado() {
+    return this.servicoQuiz.estado;
+  }
+
   constructor(private route: ActivatedRoute, private servicoQuiz: QuizService) { }
 
   ngOnDestroy(): void {
@@ -55,6 +59,10 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
       .subscribe(pergunta => {
         this.pergunta = pergunta;
       });
+  }
+
+  aoConcluirAnimacao() {
+    this.servicoQuiz.animacaoConcluida();
   }
 
 }

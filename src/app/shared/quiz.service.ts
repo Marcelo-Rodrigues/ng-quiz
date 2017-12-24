@@ -9,14 +9,22 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class QuizService {
-
+  estado: string;
   respostas = {};
   questionarios: Questionario[];
   constructor(private http: HttpClient, private router: Router) {
   }
 
+  animacaoConcluida() {
+    this.estado = 'carregado';
+  }
+
   obterUrlImagem(nome: string) {
-    return environment.apiUrl + nome;
+    if (nome) {
+      return environment.apiUrl + nome;
+    } else {
+      return environment.apiUrl + 'questionario.png';
+    }
   }
 
   obterQuestionarios() {
@@ -24,7 +32,7 @@ export class QuizService {
       return Observable.of(this.questionarios);
     } else {
       return this.http.get<Questionario[]>(environment.apiUrl + 'perguntas')
-        .do((questionarios => this.inicializarRespostas(questionarios));
+        .do(questionarios => this.inicializarRespostas(questionarios));
     }
   }
 
@@ -61,6 +69,7 @@ export class QuizService {
   }
 
   moverProximaPergunta(idQuestionario: string, idPerguntaAtual: number) {
+    this.estado = 'avancando';
     this.obterPerguntas(idQuestionario).subscribe(
       (perguntas) => {
         if (idPerguntaAtual === this.obterUltimaPergunta(perguntas)._id) {
@@ -74,8 +83,10 @@ export class QuizService {
 
   moverPerguntaAnterior(idQuestionario: string, idPerguntaAtual: number) {
     if (idPerguntaAtual > 1) {
+      this.estado = 'recuando';
       this.direcionarQuestionario(idQuestionario, idPerguntaAtual - 1);
     } else if (idPerguntaAtual === -1) {
+      this.estado = 'recuando';
       this.obterPerguntas(idQuestionario)
         .map(perguntas => this.obterUltimaPergunta(perguntas)._id)
         .subscribe(id => this.direcionarQuestionario(idQuestionario, id));

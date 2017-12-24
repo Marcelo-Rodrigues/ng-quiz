@@ -1,5 +1,5 @@
-<div class="container" *ngIf="pergunta">
-  <mat-radio-group class="quiz-radio-group" (change)="aoSelecionarOpcao($event)" >
+<div class="container" *ngIf="pergunta" [@bounceIn]="estado" (@bounceIn.done)="aoConcluirAnimacao()">
+  <mat-radio-group class="quiz-radio-group" (change)="aoSelecionarOpcao($event)">
     <div class="row justify-content-md-center">
       <div class="col col-md-auto"><h4>{{pergunta.pergunta}}</h4></div>
     </div>

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -k -n \"front,back\" \"ng serve\" \"npm run start-server\"",
+    "start": "concurrently -k -n \"front,back\" \"ng serve --open\" \"npm run start-server\"",
     "start-server": "cd server && npm start",
     "build": "ng build --prod",
     "test": "ng test",

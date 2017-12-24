@@ -1,4 +1,4 @@
-<mat-card [routerLink]="['/questionario', questionario._id]">
+<mat-card (click)="aoSelecionar()" [@bounceIn]="estado" (@bounceIn.done)="aoConcluirAnimacao()">
     <mat-card-header>
       <div mat-card-avatar class="questionario-header-image" [style.background]="'url(' + obterUrlImagem() + ')'"></div>
       <mat-card-title>{{questionario.categoria}}</mat-card-title>
