@@ -1,5 +1,28 @@
 # NgQuiz
 
+Quiz com validação de respostas conforme gabarito privado no servidor
+
+## Requisitos para desenvolvimento:
+- [Node.js 6+](https://nodejs.org/en/)
+- Para plataforma windows, necessário [GitBash](https://git-scm.com/downloads)
+- Angular CLI instalado (Dependente do Node.js)
+
+## Para instalação do Angular CLI:
+No git bash executar após a instalação do Node.js:
+
+    npm install -g @angular/cli
+
+## Para download e execução do projeto:
+No git bash executar:
+
+    git clone git@github.com:Marcelo-Rodrigues/ng-quiz.git
+    cd ng-quiz
+    npm start
+
+## Configurações
+- Os questionários são parametrizados no config: ng-quiz/server/config/perguntas.json
+- O gabarito é parametrizado no config: ng-quiz/server/config/gabarito.json
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.5.
 
 ## Development server
