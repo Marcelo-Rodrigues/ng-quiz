@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "ingles",
+    "perguntas": [
+      {
+        "_id": 1,
+        "pergunta": "'Inverno' em inglês",
+        "opcao": "Winter"
+      },
+      {
+        "_id": 2,
+        "pergunta": "'Cachorro' em inglês",
+        "opcao": "Dog"
+      },
+      {
+        "_id": 3,
+        "pergunta": "'Framboesa' em inglês",
+        "opcao": "Raspberry"
+      }
+    ]
+  },
+  {
+    "_id": "fenomeno-astronomico",
+    "perguntas": [
+      {
+        "_id": 1,
+        "pergunta": "Sobre o solstício de verão é correto afirmar:",
+        "opcao": "É o dia mais longo e a noite mais curta do ano"
+      },
+      {
+        "_id": 2,
+        "pergunta": "Sobre o equinócio de outono é correto afirmar:",
+        "opcao": "O dia e a noite possuem a mesma duração"
+      }
+    ]
+  }
+]

@@ -10,4 +10,4 @@
 <my-pergunta [pergunta]="pergunta" (opcaoSelecionada)="aoSelecionarOpcao($event)" [tabIndex]="2"
 [estado]="estado" (animacaoConcluida)="aoConcluirAnimacao()">
 </my-pergunta>
-<my-botoes-navegacao [desabilitarVoltar]="idPergunta===1" (avancarClick)="avancar()" (voltarClick)="voltar()"></my-botoes-navegacao>
+<my-botoes-navegacao [desabilitarVoltar]="idPergunta===1" (avancarClick)="avancar()" (voltarClick)="voltar()" (resumoClick)="resumo()"></my-botoes-navegacao>

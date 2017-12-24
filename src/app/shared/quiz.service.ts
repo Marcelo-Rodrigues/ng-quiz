@@ -6,6 +6,7 @@ import { Pergunta } from './pergunta';
 import { Opcao } from './opcao';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { ResultadoValidacao } from './resultado-validacao';
 
 @Injectable()
 export class QuizService {
@@ -39,7 +40,6 @@ export class QuizService {
   inicializarRespostas(questionarios: Questionario[]) {
     this.questionarios = questionarios;
     this.respostas = {};
-    console.log(questionarios);
     questionarios.forEach(questionario => {
 
       const questionarioEmBranco = questionario.perguntas.map(p => new Opcao(p, null));
@@ -48,7 +48,6 @@ export class QuizService {
       this.respostas[questionario._id] = Object.assign(questionarioEmBranco, this.respostas[questionario._id]);
 
     });
-    console.log(this.respostas);
   }
 
   obterPerguntas(idQuestionario: string) {
@@ -93,7 +92,17 @@ export class QuizService {
     }
   }
 
-  direcionarQuestionario(idQuestionario: string, idPergunta: string | number) {
+  moverPergunta(idQuestionario: string, idPergunta: number): any {
+    this.estado = 'recuando';
+    this.direcionarQuestionario(idQuestionario, idPergunta);
+  }
+
+  moverResumo(idQuestionario: string): any {
+    this.estado = 'avancando';
+    this.direcionarQuestionario(idQuestionario, 'resumo');
+  }
+
+  private direcionarQuestionario(idQuestionario: string, idPergunta: string | number) {
     this.router.navigate(['/questionario', idQuestionario, idPergunta]);
   }
 
@@ -112,5 +121,13 @@ export class QuizService {
     if (respostasQuestionario) {
       this.atualizarResposta(respostasQuestionario, resposta);
     }
+  }
+
+  confirmarValidar(idQuestionario: string) {
+    return this.http.post<ResultadoValidacao[]>(environment.apiUrl + 'validar-respostas',
+      {
+        _id: idQuestionario,
+        perguntas: this.respostas[idQuestionario]
+      });
   }
 }

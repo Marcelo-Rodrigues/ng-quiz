@@ -3,23 +3,31 @@
 
   <div class="row">
     <div class="col">
-      <div class="card" *ngFor="let resposta of respostas">
-        <div class="card-heading bg-info">
+      <div [ngClass]="{'card':true,'validado':resultadoValidacao,
+      'bg-danger resposta-errada':
+      resultadoValidacao && !obterResultadoValidacao(resposta.pergunta)?.acertou
+    }" *ngFor="let resposta of respostas">
+        <a class="card-heading bg-info" (click)="navegarPergunta(resposta.pergunta)">
           Pergunta: {{resposta.pergunta.pergunta}}
-        </div>
-        <div class="card-body" *ngIf="resposta.opcao">
+        </a>
+        <div class="card-body resposta" *ngIf="resposta.opcao">
           Resposta: {{resposta.opcao}}
         </div>
-        <div class="card-body bg-danger" *ngIf="!resposta.opcao">
+        <div class="card-body bg-warning" *ngIf="!resposta.opcao">
           Não respondido
+        </div>
+        <div class="card-body bg-success" *ngIf="resultadoValidacao && !obterResultadoValidacao(resposta.pergunta)?.acertou">
+          Resposta correta: {{obterResultadoValidacao(resposta.pergunta).opcaoCorreta}}
         </div>
       </div>
     </div>
   </div>
 
-  <my-botoes-navegacao [exibirAvancar]="false" (voltarClick)="voltar()">
+  <my-botoes-navegacao [exibirAvancar]="false" [exibirResumo]="false" (voltarClick)="voltar()">
     <ng-container direita>
-      <button class="btn btn-success" matTooltip="Confirmar respostas e validar"><i class="fa fa-check"></i></button>
+      <button class="btn btn-success" matTooltip="Confirmar respostas e validar" (click)="confirmarValidar()">
+        <i class="fa fa-check"></i>
+      </button>
     </ng-container>
   </my-botoes-navegacao>
 </div>

@@ -65,4 +65,7 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
     this.servicoQuiz.animacaoConcluida();
   }
 
+  resumo() {
+    this.servicoQuiz.moverResumo(this.idQuestionario);
+  }
 }

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Opcao } from '../shared/opcao';
 import { BOUNCE_IN_SIDES_ANIMATION } from '../shared/animations/bounce-in-sides.animation';
+import { Pergunta } from '../shared/pergunta';
+import { ResultadoValidacao } from '../shared/resultado-validacao';
 
 @Component({
   selector: 'my-resumo-respostas',
@@ -14,6 +16,7 @@ import { BOUNCE_IN_SIDES_ANIMATION } from '../shared/animations/bounce-in-sides.
 export class ResumoRespostasComponent implements OnInit {
 
   private subscricaoRota: Subscription;
+  resultadoValidacao: ResultadoValidacao[];
   respostas: Opcao[];
   idQuestionario: string;
   constructor(private route: ActivatedRoute, private servicoQuiz: QuizService) { }
@@ -40,6 +43,21 @@ export class ResumoRespostasComponent implements OnInit {
 
   aoConcluirAnimacao() {
     this.servicoQuiz.animacaoConcluida();
+  }
+
+  confirmarValidar() {
+    this.servicoQuiz
+      .confirmarValidar(this.idQuestionario)
+      .subscribe(res => this.resultadoValidacao = res);
+  }
+
+  navegarPergunta(pergunta: Pergunta) {
+    this.servicoQuiz.moverPergunta(this.idQuestionario, pergunta._id);
+  }
+
+  obterResultadoValidacao(pergunta: Pergunta) {
+    return this.resultadoValidacao ?
+      this.resultadoValidacao.find(res => res.pergunta._id === pergunta._id) : null;
   }
 
 }

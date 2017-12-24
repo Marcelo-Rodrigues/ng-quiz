@@ -1,3 +1,16 @@
 .card {
   margin-bottom: 20px;
 }
+
+.validado .resposta {
+  background-color: green;
+}
+
+.resposta-errada {
+  background-color: red;
+}
+
+.resposta-errada div.card-body.resposta {
+  text-decoration: line-through;
+  background-color: red;
+}

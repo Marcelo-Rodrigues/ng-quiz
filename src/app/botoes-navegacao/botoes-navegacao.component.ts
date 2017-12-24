@@ -1,4 +1,4 @@
-import { Component, OnInit,EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Input, Output } from '@angular/core';
 
 @Component({
@@ -9,9 +9,11 @@ import { Input, Output } from '@angular/core';
 export class BotoesNavegacaoComponent implements OnInit {
 
   @Input() exibirAvancar = true;
+  @Input() exibirResumo = true;
   @Input() desabilitarVoltar = false;
   @Output() voltarClick = new EventEmitter();
   @Output() avancarClick = new EventEmitter();
+  @Output() resumoClick = new EventEmitter();
 
   constructor() { }
 
@@ -26,4 +28,7 @@ export class BotoesNavegacaoComponent implements OnInit {
     this.avancarClick.emit();
   }
 
+  aoClicarResumo() {
+    this.resumoClick.emit();
+  }
 }
