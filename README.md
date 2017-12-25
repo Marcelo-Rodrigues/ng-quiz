@@ -6,13 +6,19 @@ Quiz com validação de respostas conforme gabarito privado no servidor
 
 - Instalar o [docker (Stable channel)](https://docs.docker.com/docker-for-windows/install/)
 
-- Criar a imagem:
+- Criar o container:
 
 ``` bash
 docker run -p 5000:8080 -d --name ng-quiz  marcelorodrigues/ng-quiz
 ```
 
 - Acessar http://localhost:5000/
+
+- Para visualizar o log de execução:
+
+``` bash
+docker logs ng-quiz
+```
 
 ## Requisitos para desenvolvimento:
 
