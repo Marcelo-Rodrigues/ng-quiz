@@ -7,3 +7,4 @@ mv ./deploy/config-deploy.json ./deploy/config.json
 cp ./Dockerfile ./deploy/Dockerfile
 cp ./.dockerignore ./deploy/.dockerignore
 docker build -t marcelorodrigues/ng-quiz ./deploy
+docker tag marcelorodrigues/ng-quiz marcelorodrigues/ng-quiz:`date +%Y-%m-%d`
