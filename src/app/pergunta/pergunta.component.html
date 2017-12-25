@@ -1,5 +1,5 @@
 <div class="container" *ngIf="pergunta" [@bounceIn]="estado" (@bounceIn.done)="aoConcluirAnimacao()">
-  <mat-radio-group class="quiz-radio-group" (change)="aoSelecionarOpcao($event)">
+  <mat-radio-group class="quiz-radio-group" [value]="opcao" (change)="aoSelecionarOpcao($event)">
     <div class="row justify-content-md-center">
       <div class="col col-md-auto"><h4>{{pergunta.pergunta}}</h4></div>
     </div>
@@ -18,17 +18,3 @@
   </mat-radio-group>
     <div class="row">&nbsp;</div>
 </div>
-<!--
-<table class="tabela-pergunta" >
-  <thead>
-    <tr>
-      <th></th>
-    </tr>
-    <tbody>
-      <tr>
-        <td>
-
-        </td>
-      </tr>
-    </tbody>
-</table> -->

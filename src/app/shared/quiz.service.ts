@@ -67,6 +67,21 @@ export class QuizService {
       .map((perguntas) => perguntas.find(p => p._id === idPergunta));
   }
 
+  obterResposta(idQuestionario: string, idPergunta: number) {
+    const questionario = this.respostas[idQuestionario];
+
+    if (!questionario) {
+      return null;
+    }
+    const resposta = questionario.find(p => p.pergunta._id === idPergunta);
+
+    if (!resposta) {
+      return null;
+    }
+
+    return resposta.opcao;
+  }
+
   moverProximaPergunta(idQuestionario: string, idPerguntaAtual: number) {
     this.estado = 'avancando';
     this.obterPerguntas(idQuestionario).subscribe(

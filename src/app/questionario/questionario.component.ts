@@ -19,6 +19,7 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
   idPergunta: number;
   posicao = 2;
   autoAvancar = true;
+  opcaoSelecionada;
 
   get estado() {
     return this.servicoQuiz.estado;
@@ -58,6 +59,7 @@ export class QuestionarioComponent implements OnInit, OnDestroy {
     this.servicoQuiz.obterPergunta(idQuestionario, idPergunta)
       .subscribe(pergunta => {
         this.pergunta = pergunta;
+        this.opcaoSelecionada = this.servicoQuiz.obterResposta(idQuestionario, idPergunta);
       });
   }
 

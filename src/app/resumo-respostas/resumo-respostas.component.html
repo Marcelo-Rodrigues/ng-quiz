@@ -7,7 +7,7 @@
       'bg-danger resposta-errada':
       resultadoValidacao && !obterResultadoValidacao(resposta.pergunta)?.acertou
     }" *ngFor="let resposta of respostas">
-        <a class="card-heading bg-info" (click)="navegarPergunta(resposta.pergunta)">
+        <a class="card-heading bg-info pergunta" (click)="navegarPergunta(resposta.pergunta)">
           Pergunta: {{resposta.pergunta.pergunta}}
         </a>
         <div class="card-body resposta" *ngIf="resposta.opcao">

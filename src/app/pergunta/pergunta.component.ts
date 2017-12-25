@@ -13,6 +13,7 @@ import { BOUNCE_IN_SIDES_ANIMATION } from '../shared/animations/bounce-in-sides.
 })
 export class PerguntaComponent implements OnInit {
 
+  @Input() opcao;
   @Input() estado;
   @Input() tabIndex: number;
   @Input() pergunta: Pergunta;
