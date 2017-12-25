@@ -5,11 +5,17 @@ var path = require('path')
 const app = express();
 
 // BD
-var Datastore = require('nedb')
-, db = new Datastore({ filename: './respostas.db', autoload: true });
+const Datastore = require('nedb');
+const config = JSON.parse(fs.readFileSync(path.resolve('./config.json')));
+
+const db = new Datastore({ filename: path.resolve(config.respostaDb), autoload: true });
 
 app.use(bodyParser.json());
-const gabarito = JSON.parse(fs.readFileSync(__dirname + '/config/gabarito.json'));
+const gabarito = JSON.parse(fs.readFileSync(path.resolve(config.gabarito)));
+
+if(!gabarito) {
+  throw new Error("Falha ao ler o gabarito - verifique o parametro gabarito no arquivo config.json");
+}
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -17,12 +23,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.set('port', (process.env.PORT || 5000));
-app.use(express.static(path.resolve('config/img')));
-app.use(express.static(path.resolve('../dist')));
+app.set('port', (process.env.PORT || 8080));
+app.use(express.static(path.resolve(config.imgQuestionarios)));
+app.use(express.static(path.resolve(config.front)));
 
 app.get('/perguntas', function (req, res) {
-  res.sendFile(__dirname + '/config/perguntas.json');
+  res.sendFile(path.resolve(config.perguntas));
 });
 
 app.post('/validar-respostas', function (req, res) {
@@ -46,7 +52,6 @@ function validar(questionario) {
     const perguntaRespondida = questionario.perguntas.find(function (p) {
       return p.pergunta._id === perguntaGabarito._id;
     });
-    console.dir(perguntaRespondida);
 
     if (!perguntaRespondida) {
       throw new Error('Versão de questionário inválida - pergunta não encontrada');
@@ -69,7 +74,7 @@ function validar(questionario) {
 }
 
 app.get('*', function (req, res) {
-  res.sendFile(__dirname + '/../dist/index.html');
+  res.sendFile(path.resolve(config.front,'index.html'));
 });
 
 app.listen(app.get('port'), function () {

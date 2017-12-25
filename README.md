@@ -2,24 +2,44 @@
 
 Quiz com validação de respostas conforme gabarito privado no servidor
 
+## Disponível no docker:
+
+- Instalar o [docker (Stable channel)](https://docs.docker.com/docker-for-windows/install/)
+
+- Criar a imagem:
+
+``` bash
+docker run -p 5000:8080 -d --name ng-quiz  marcelorodrigues/ng-quiz
+```
+
+- Acessar http://localhost:5000/
+
 ## Requisitos para desenvolvimento:
+
 - [Node.js 6+](https://nodejs.org/en/)
 - Para plataforma windows, necessário [GitBash](https://git-scm.com/downloads)
 - Angular CLI instalado (Dependente do Node.js)
 
 ## Para instalação do Angular CLI:
+
 No git bash executar após a instalação do Node.js:
 
-    npm install -g @angular/cli
+``` bash
+npm install -g @angular/cli
+```
 
 ## Para download e execução do projeto:
+
 No git bash executar:
 
-    git clone git@github.com:Marcelo-Rodrigues/ng-quiz.git
-    cd ng-quiz
-    npm start
+``` bash
+git clone git@github.com:Marcelo-Rodrigues/ng-quiz.git
+cd ng-quiz
+npm start
+```
 
 ## Configurações
+
 - Os questionários são parametrizados no config: ng-quiz/server/config/perguntas.json
 - O gabarito é parametrizado no config: ng-quiz/server/config/gabarito.json
 

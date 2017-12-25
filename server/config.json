@@ -1,0 +1,7 @@
+{
+  "respostaDb":"respostas.db",
+  "gabarito":"config/gabarito.json",
+  "perguntas":"config/perguntas.json",
+  "imgQuestionarios":"config/img",
+  "front":"../dist"
+}
